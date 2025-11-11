@@ -92,7 +92,7 @@ document.querySelectorAll('button[data-action]').forEach(btn => {
         }
 
         else if (action === 'google') {
-            alert('Google login – Good Choice');
+            alert('Good Choice');
         }
     });
 });
