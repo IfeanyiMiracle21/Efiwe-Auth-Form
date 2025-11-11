@@ -1,1 +1,18 @@
-
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{
+        min-height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:#f0f0f0;
+        font-family:'Poppins',sans-serif;
+        padding:15px;
+    }
+    .container{
+        width:420px;
+        max-width:100%;
+        background:#fff;
+        border-radius:15px;
+        box-shadow:0 6px 25px rgba(0,0,0,.15);
+        overflow:visible;
+    }
