@@ -63,7 +63,7 @@ document.querySelectorAll('button[data-action]').forEach(btn => {
             const pwd = document.getElementById('login-pwd').value;
             if (!email) return showError('login-email-error', 'Email is required');
             if (!pwd) return showError('login-pwd-error', 'Password is required');
-            alert('Login successful! (demo)');
+            alert('Login successful! (Welcome Back)');
         }
 
         else if (action === 'signup') {
@@ -82,17 +82,17 @@ document.querySelectorAll('button[data-action]').forEach(btn => {
             if (!isGroup && !document.querySelector('input[name="gender"]:checked'))
                 return showError('gender-error', 'Please select gender');
 
-            alert('Signup successful! (demo)');
+            alert('Signup successful! (Goodluck)');
         }
 
         else if (action === 'reset') {
             const email = document.getElementById('reset-email').value.trim();
             if (!email) return showError('reset-email-error', 'Email is required');
-            alert('Reset link sent! (demo)');
+            alert('Reset link sent! (Got Check it Out!)');
         }
 
         else if (action === 'google') {
-            alert('Google login – demo');
+            alert('Google login – Good Choice');
         }
     });
 });
