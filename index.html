@@ -9,109 +9,108 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="form-header">
+    <h1>Authentication Quest</h1>
+    <div class="fancy-line"></div>
+</div>
+
 <div class="container">
-   
-    <div class="level-indicator">
-        Authentication Quest
-        <div class="xp-bar"><div class="xp-fill"></div></div>
-    </div>
-
-
     <div class="tabs">
-        <button class="tab active" data-tab="login"><i class="fas fa-sign-in-alt"></i> Login</button>
-        <button class="tab" data-tab="signup"><i class="fas fa-user-plus"></i> Signup</button>
-        <button class="tab" data-tab="reset"><i class="fas fa-key"></i> Reset</button>
+        <button class="tab active" data-tab="login">Login</button>
+        <button class="tab" data-tab="signup">Signup</button>
+        <button class="tab" data-tab="reset">Reset</button>
     </div>
-
 
     <div class="slider-wrapper">
         <div class="form-section login">
-            
+
+            <!-- LOGIN -->
             <div class="form-box" id="login-box">
                 <div class="ai-robot"><i class="fas fa-robot"></i></div>
                 <div class="fun-message">Welcome back! Your next AI challenge awaits!</div>
-                <div class="progress-container"><div class="progress-bar"></div></div>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required minlength="8">
-                <button class="login-btn" onclick="submitForm('login')">Login</button>
-                <p class="or">or</p>
-                <button class="google-btn">Sign in with Google</button>
+                <div class="progress-container"><div class="progress-bar" id="login-progress"></div></div>
+
+                <input type="email" id="login-email" placeholder="Email" required oninput="updateProgress('login')">
+                <div class="error-msg" id="login-email-error"></div>
+
+                <input type="password" id="login-pwd" placeholder="Password" required oninput="updateProgress('login')">
+                <div class="error-msg" id="login-pwd-error"></div>
+
+                <button class="login-btn" data-action="login">Login</button>
+                <p class="or"><span>or</span></p>
+                <button class="google-btn" data-action="google">Sign in with Google</button>
             </div>
 
-            
+            <!-- SIGNUP -->
             <div class="form-box" id="signup-box">
                 <div class="ai-robot"><i class="fas fa-robot"></i></div>
                 <div class="fun-message">Join the AI coders' league!</div>
-                <div class="progress-container"><div class="progress-bar"></div></div>
+                <div class="progress-container"><div class="progress-bar" id="signup-progress"></div></div>
 
-                
                 <div class="account-type">
                     <label>Account Type</label>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" name="acct" value="ind" checked onchange="updateFields()">
+                            <input type="radio" name="acct" value="ind" checked onchange="updateFields(); updateProgress('signup')">
                             <span>Individual</span>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="acct" value="grp" onchange="updateFields()">
+                            <input type="radio" name="acct" value="grp" onchange="updateFields(); updateProgress('signup')">
                             <span>Group</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Group Size (Only for Group) -->
                 <div class="account-type group-size-wrapper" id="group-size-wrapper">
                     <label>Group Size</label>
-                    <select required>
+                    <select id="group-size" onchange="updateProgress('signup')">
                         <option value="" disabled selected>Select size</option>
                         <option value="1-9">Less than 10</option>
                         <option value="10-50">10 - 50</option>
                         <option value="51-100">51 - 100</option>
                         <option value="100+">More than 100</option>
                     </select>
+                    <div class="error-msg" id="group-size-error"></div>
                 </div>
 
-                <!-- Gender (Only for Individual) -->
                 <div class="account-type gender-wrapper show" id="gender-wrapper">
                     <label>Gender</label>
                     <div class="radio-group">
-                        <div class="radio-option"><input type="radio" name="gender" value="m"><span>Male</span></div>
-                        <div class="radio-option"><input type="radio" name="gender" value="f"><span>Female</span></div>
-                        <div class="radio-option"><input type="radio" name="gender" value="c"><span>Custom</span></div>
+                        <div class="radio-option"><input type="radio" name="gender" value="m" onchange="updateProgress('signup')"><span>Male</span></div>
+                        <div class="radio-option"><input type="radio" name="gender" value="f" onchange="updateProgress('signup')"><span>Female</span></div>
+                        <div class="radio-option"><input type="radio" name="gender" value="c" onchange="updateProgress('signup')"><span>Custom</span></div>
                     </div>
+                    <div class="error-msg" id="gender-error"></div>
                 </div>
 
-                <!-- Full Name / Group Name (Dynamic Label) -->
                 <div class="account-type">
                     <label id="name-label">Full Name</label>
-                    <input type="text" id="name-input" placeholder="Full Name" required>
+                    <input type="text" id="name-input" placeholder="Full Name" required oninput="updateProgress('signup')">
+                    <div class="error-msg" id="name-error"></div>
                 </div>
 
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required minlength="8">
-                <button class="login-btn" onclick="submitForm('signup')">Signup &amp; Level Up</button>
-                <p class="or">or</p>
-                <button class="google-btn">Sign up with Google</button>
+                <input type="email" id="signup-email" placeholder="Email" required oninput="updateProgress('signup')">
+                <div class="error-msg" id="signup-email-error"></div>
+
+                <input type="password" id="signup-pwd" placeholder="Password" required minlength="6" oninput="updateProgress('signup')">
+                <div class="error-msg" id="signup-pwd-error"></div>
+
+                <button class="login-btn" data-action="signup">Signup</button>
+                <p class="or"><span>or</span></p>
+                <button class="google-btn" data-action="google">Sign up with Google</button>
             </div>
 
             <!-- RESET -->
             <div class="form-box" id="reset-box">
                 <div class="ai-robot"><i class="fas fa-robot"></i></div>
                 <div class="fun-message">Let's get you back into your AI coding journey!</div>
-                <div class="progress-container"><div class="progress-bar"></div></div>
-                <input type="email" placeholder="Email" required>
-                <button class="login-btn" onclick="submitForm('reset')">Reset</button>
+                <div class="progress-container"><div class="progress-bar" id="reset-progress"></div></div>
+
+                <input type="email" id="reset-email" placeholder="Email" required oninput="updateProgress('reset')">
+                <div class="error-msg" id="reset-email-error"></div>
+
+                <button class="login-btn" data-action="reset">Reset</button>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Achievement -->
-<div id="achieve" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
-    background:rgba(0,0,0,.9);color:#fff;padding:20px 30px;border-radius:12px;
-    display:none;z-index:1000;text-align:center;font-size:16px">
-    <i class="fas fa-trophy" style="font-size:40px;color:gold;display:block;margin-bottom:8px"></i>
-    Achievement Unlocked: AI Explorer!<br><strong>+50 XP</strong>
-</div>
-</body>
-</html>
