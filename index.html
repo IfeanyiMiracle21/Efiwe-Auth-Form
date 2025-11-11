@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Efiwe Auth Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+   
+    <div class="level-indicator">
+        Authentication Quest
+        <div class="xp-bar"><div class="xp-fill"></div></div>
+    </div>
 
+
+    <div class="tabs">
+        <button class="tab active" data-tab="login"><i class="fas fa-sign-in-alt"></i> Login</button>
+        <button class="tab" data-tab="signup"><i class="fas fa-user-plus"></i> Signup</button>
+        <button class="tab" data-tab="reset"><i class="fas fa-key"></i> Reset</button>
+    </div>
+
+
+    <div class="slider-wrapper">
+        <div class="form-section login">
+            
+            <div class="form-box" id="login-box">
+                <div class="ai-robot"><i class="fas fa-robot"></i></div>
+                <div class="fun-message">Welcome back! Your next AI challenge awaits!</div>
+                <div class="progress-container"><div class="progress-bar"></div></div>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required minlength="8">
+                <button class="login-btn" onclick="submitForm('login')">Login</button>
+                <p class="or">or</p>
+                <button class="google-btn">Sign in with Google</button>
+            </div>
+
+            
+            <div class="form-box" id="signup-box">
+                <div class="ai-robot"><i class="fas fa-robot"></i></div>
+                <div class="fun-message">Join the AI coders' league!</div>
+                <div class="progress-container"><div class="progress-bar"></div></div>
+
+                
+                <div class="account-type">
+                    <label>Account Type</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="acct" value="ind" checked onchange="updateFields()">
+                            <span>Individual</span>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="acct" value="grp" onchange="updateFields()">
+                            <span>Group</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group Size (Only for Group) -->
+                <div class="account-type group-size-wrapper" id="group-size-wrapper">
+                    <label>Group Size</label>
+                    <select required>
+                        <option value="" disabled selected>Select size</option>
+                        <option value="1-9">Less than 10</option>
+                        <option value="10-50">10 - 50</option>
+                        <option value="51-100">51 - 100</option>
+                        <option value="100+">More than 100</option>
+                    </select>
+                </div>
+
+                <!-- Gender (Only for Individual) -->
+                <div class="account-type gender-wrapper show" id="gender-wrapper">
+                    <label>Gender</label>
+                    <div class="radio-group">
+                        <div class="radio-option"><input type="radio" name="gender" value="m"><span>Male</span></div>
+                        <div class="radio-option"><input type="radio" name="gender" value="f"><span>Female</span></div>
+                        <div class="radio-option"><input type="radio" name="gender" value="c"><span>Custom</span></div>
+                    </div>
+                </div>
+
+                <!-- Full Name / Group Name (Dynamic Label) -->
+                <div class="account-type">
+                    <label id="name-label">Full Name</label>
+                    <input type="text" id="name-input" placeholder="Full Name" required>
+                </div>
+
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required minlength="8">
+                <button class="login-btn" onclick="submitForm('signup')">Signup &amp; Level Up</button>
+                <p class="or">or</p>
+                <button class="google-btn">Sign up with Google</button>
+            </div>
+
+            <!-- RESET -->
+            <div class="form-box" id="reset-box">
+                <div class="ai-robot"><i class="fas fa-robot"></i></div>
+                <div class="fun-message">Let's get you back into your AI coding journey!</div>
+                <div class="progress-container"><div class="progress-bar"></div></div>
+                <input type="email" placeholder="Email" required>
+                <button class="login-btn" onclick="submitForm('reset')">Reset</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Achievement -->
+<div id="achieve" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+    background:rgba(0,0,0,.9);color:#fff;padding:20px 30px;border-radius:12px;
+    display:none;z-index:1000;text-align:center;font-size:16px">
+    <i class="fas fa-trophy" style="font-size:40px;color:gold;display:block;margin-bottom:8px"></i>
+    Achievement Unlocked: AI Explorer!<br><strong>+50 XP</strong>
+</div>
+</body>
+</html>
