@@ -82,13 +82,13 @@ document.querySelectorAll('button[data-action]').forEach(btn => {
             if (!isGroup && !document.querySelector('input[name="gender"]:checked'))
                 return showError('gender-error', 'Please select gender');
 
-            alert('Signup successful! (Goodluck)');
+            alert('Signup successful! (Goodluck dev)');
         }
 
         else if (action === 'reset') {
             const email = document.getElementById('reset-email').value.trim();
             if (!email) return showError('reset-email-error', 'Email is required');
-            alert('Reset link sent! (Got Check it Out!)');
+            alert('Reset link sent! (Go Check it Out!)');
         }
 
         else if (action === 'google') {
